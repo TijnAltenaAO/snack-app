@@ -30,7 +30,15 @@ class OrderListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['title' => 'required']);
+
+        $orderList = new OrderList;
+        $orderList->name = $request['title'];
+        $orderList->created_by = $request->user()->name;
+        // $orderList->active = 1;
+        $orderList->save();
+        
+        return redirect('/order-lists/' . $orderList->id);
     }
 
     /**
@@ -38,7 +46,10 @@ class OrderListController extends Controller
      */
     public function show(OrderList $orderList)
     {
-        //
+        // Hier hoort nog data opgehaald te worden van orders tabel, joined on order_lists.id=orders.orderlist_id, om te zien welke orders bij de list horen
+        return view('order_lists.show')->with([
+            'orderList' => $orderList,
+        ]);
     }
 
     /**
@@ -46,7 +57,7 @@ class OrderListController extends Controller
      */
     public function edit(OrderList $orderList)
     {
-        //
+        // Hier afrond logica. Zet veld active van orderlists op 0 indien 
     }
 
     /**

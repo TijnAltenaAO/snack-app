@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OrderListController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PlaceOrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +31,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('/order-lists', OrderListController::class);
+Route::resource('/place-order', PlaceOrderController::class);
+// Route::get('/place-order/create/{id}', PlaceOrderController::class, 'create')->name('place-order.create');
+
 require __DIR__ . '/auth.php';

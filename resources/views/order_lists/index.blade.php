@@ -25,6 +25,9 @@
                             <th class="border-b font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 text-left">
                                 {{ __('Created by') }}
                             </th>
+                            <th class="border-b font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 text-left">
+                                {{ __('Actions') }}
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -37,7 +40,10 @@
                                     {{ $orderList->created_at }}
                                 </td>
                                 <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
-                                    {{ $orderList->full_name }}
+                                    {{ $orderList->created_by }}
+                                </td>
+                                <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+                                    <a href="/order-lists/{{ $orderList->id }}">Details hier!</>
                                 </td>
                             </tr>
                         @endforeach
